@@ -7,7 +7,6 @@ Created on 2015年5月6日
 '''
 
 import sqlite3
-from macpath import curdir
 
 conn = sqlite3.connect(u'test.db')
 

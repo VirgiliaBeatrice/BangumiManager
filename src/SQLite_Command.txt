@@ -1,0 +1,17 @@
+CREATE TABLE BungumiDatabase([id] INTEGER PRIMARY KEY AUTOINCREMENT);
+ALTER TABLE BungumiDatabase RENAME TO BangumiDatabase;
+ALTER TABLE BangumiDatabase ADD COLUMN Title TEXT;
+ALTER TABLE BangumiDatabase ADD COLUMN Fansub_0 TEXT;
+ALTER TABLE BangumiDatabase ADD COLUMN Fansub_1 TEXT;
+ALTER TABLE BangumiDatabase ADD COLUMN Fansub_2 TEXT;
+ALTER TABLE BangumiDatabase ADD COLUMN 'No' INT;
+ALTER TABLE BangumiDatabase ADD COLUMN Othertag_0 TEXT;
+ALTER TABLE BangumiDatabase ADD COLUMN Othertag_1 TEXT;
+ALTER TABLE BangumiDatabase ADD COLUMN Othertag_2 TEXT;
+ALTER TABLE BangumiDatabase ADD COLUMN FileFormat TEXT;
+ALTER TABLE BangumiDatabase ADD COLUMN 'Group' TEXT;
+
+INSERT INTO BangumiDatabase (id, Title, Fansub_0, 'No', 'OtherTage_0', 'FileFormat', 'Group')
+VALUES (NULL, 'Hibike', 'Sumisora', '01', '720p', 'mp4', 'Video');
+DELETE FROM BangumiDatabase
+WHERE [Id] = 2;

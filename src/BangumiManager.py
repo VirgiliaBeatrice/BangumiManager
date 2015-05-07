@@ -6,7 +6,6 @@ Created on 2015年5月3日
 @author: VirgiliaBeatrice
 '''
 import os
-from __builtin__ import str
 # from __builtin__ import str
 
 
@@ -34,14 +33,38 @@ def tag_generator(tagstr):
     
     
 
-def splittag(tagstr):
-    tag_list = []
-    all_tag = [tag for tag in tag_generator(tagstr)]
+#TODO: Implement analysis code.
+def tag_analysis(filename):
+    tag_package = {}
+    all_tag = [tag for tag in tag_generator(os.path.splitext(filename)[0])]
+    tag_package[u'ext'] = os.path.splitext(filename)[1]
     
-    print tag_list
+    tag_package[u'othertags'] = []
+    dummy_idx = 0
     
-splittag(u'[CASO&SumiSora][Owari_no_Seraph][01][GB][720p].mp4')
+    for tag in all_tag:
+        if dummy_idx == 0:
+            tag_package[u'fansubs'] = fansub_analysis(tag)
+        elif (dummy_idx == 1):
+            tag_package[u'title'] = tag
+        elif (dummy_idx == 2):
+            if tag.isnumeric():
+                tag_package[u'no'] = int(tag)
+            else:
+                tag_package[u'othertags'].append(tag)
+        else:
+            tag_package[u'othertags'].append(tag)
+        
+        dummy_idx += 1
+        
+    return tag_package
+    
+    
+def fansub_analysis(fansub_string):
+    return fansub_string.split(u'&')    
+    
     
     
 if __name__ == '__main__':
+    print tag_analysis(u'[CASO&SumiSora][Owari_no_Seraph][01][GB][720p].mp4')
     pass
